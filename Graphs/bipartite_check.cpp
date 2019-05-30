@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N=(int) 1e8;
+const int N=(int) 1e7;
 vector<int> adj[N];
 int color[N];
 
@@ -19,5 +19,5 @@ int main(){
     memset(color,-1, sizeof(color));
     color[0]=0;
     bool valid=bipartite_check(0);
-
+    return 0;
 }
