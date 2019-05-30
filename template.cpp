@@ -11,7 +11,7 @@ typedef vector<ii> vii;
 typedef long long ll;
 #define all(c) (c).begin(),(c).end()
 #define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
-#define present(c,x) ((c).find(x) != (c).end())        //for set or map any container that implements find();
+#define present(c,x) ((c).find(x) != (c).end())        //for set or map or any container that implements find();
 #define cpresent(c,x) (find(all(c),x) != (c).end())    //for vectors
 
 
