@@ -6,7 +6,10 @@ bool vis[N];
 int n;
 void dfs(int u){
     for (int v:adj[u]){
-        if(!vis[v]) dfs(v);
+        if(!vis[v]){
+	vis[v]=1;
+	dfs(v):
+	} 
     }
 }
 
