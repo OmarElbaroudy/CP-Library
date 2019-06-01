@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-const int N = (int) 1e7;
-vector<int> adj[N];
-bool in_scc[N];
-int parent[N], dfs_num[N], dfs_low[N];
-int n, cnt, scc;
+int N;
+vector<vector<int> > adj;
+vector<bool> in_scc;
+vector<int> parent, dfs_num, dfs_low;
+int cnt, scc;
 stack<int> st;
 
 void tarjan_scc(int u) {
@@ -30,17 +30,18 @@ void tarjan_scc(int u) {
 }
 
 void tarjan_scc() {
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < N; ++i) {
         if (!dfs_num[i])    //preTraversal
             tarjan_scc(i);
     }
 }
 
 int main() {
-    n = cnt = scc = 0;
-    memset(in_scc, 0, sizeof(parent));
-    memset(dfs_low, 0, sizeof(dfs_low));
-    memset(dfs_num, 0, sizeof(dfs_num));
+    cnt = scc = 0;
+    in_scc.assign(N, false);
+    dfs_num.assign(N, 0);
+    dfs_low.assign(N, 0);
+    adj.resize(N);
     tarjan_scc();
     return 0;
 }

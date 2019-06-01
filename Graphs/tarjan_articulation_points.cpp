@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-const int N = (int) 1e7;
-vector<int> adj[N];
-bool vis[N], art_point[N];
-int parent[N], dfs_num[N], dfs_low[N];
+int N;
+vector<vector<int> > adj;
+vector<bool> vis, art_point;
+vector<int> parent, dfs_num, dfs_low;
 int n, cnt, root, root_children;
 
 void dfs(int u) {
@@ -45,12 +45,12 @@ void artpoints_and_bridges() {
 
 int main() {
     n = cnt = root = root_children = 0;
-    memset(vis, 0, sizeof(vis));
-    memset(art_point, 0, sizeof(art_point));
-    memset(parent, 0, sizeof(parent));
-    memset(dfs_low, 0, sizeof(dfs_low));
-    memset(dfs_num, 0, sizeof(dfs_num));
+    vis.assign(N, false);
+    art_point.assign(N, false);
+    parent.assign(N, 0);
+    dfs_low.assign(N, 0);
+    dfs_num.assign(N, 0);
+    adj.resize(N);
     artpoints_and_bridges();
-
     return 0;
 }
