@@ -12,18 +12,16 @@ typedef long long ll;
 
 #define all(c) (c).begin(),(c).end()
 #define faster ios_base::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr)
-#define tr(c, i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
+#define tr(c, i) for(auto i = (c).begin(); i != (c).end(); i++)
 #define present(c, x) ((c).find(x) != (c).end())        //for set or map or any container that implements find();
 #define vpresent(c, x) (find(all(c),x) != (c).end())    //for vectors
 #define print_array(arr) for (const auto& value: arr) { cout << value << ' ';}
 #define nl "\n"
+#define sp " "
 #define debug(x) cout<<#x<<" = "<<(x)<<nl
-
 
 int main() {
     faster;
 
     return 0;
 }
-
-
