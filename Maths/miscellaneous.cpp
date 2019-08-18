@@ -1,11 +1,9 @@
 //performing fast b^p
-int fastpow(int b, int p) {
+ll fastpow(ll b, ll p) {
     if (p == 0) return 1;
-    int sq = fastpow(b, p / 2);
-    sq = sq * sq;
-
-    if (p % 2 == 1) sq = sq * b;
-    return sq;
+    if (p & 1)
+        return b * fastpow(b * b, p >> 1);
+    return fastpow(b * b, p >> 1);
 }
 
 // find the greatest common divisor of a and b
@@ -48,5 +46,22 @@ ll diophantine(ll a, ll b, ll c, ll &x, ll &y, bool &found) {
     ll g = extendedeuclid(a, b, x, y);
     if ((found = (c % g == 0))) x *= c / g, y *= c / g;
     return g;
+}
+
+
+//chinese remainder theorem to solve system of congruence equations
+ll crt(vector<ll> &rems, vector<ll> &mods) {
+    ll rem = rems[0], mod = mods[0];
+
+    for (int i = 1; i < rems.size(); i++) {
+        ll x, y, found, a = mod, b = -mods[i], c = rems[i] - rem;
+        ll g = diophantine(a, b, c, x, y, found);
+        if (!found) return -1;
+        rem += mod * x;          //evaluate previous congruence
+        rem = mod / g * mods[i]; //merge mods with previous equation
+        rem = (rem % mod + mod) % mod;
+    }
+
+    return rem;
 }
 

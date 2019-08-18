@@ -79,3 +79,21 @@ int factprimepow(int x, int p){ //O(logp(x))
     return pow;
 }
 
+//count prime factors for each number in the range from 1 to r
+void sieveprimefactors(ll r, vector<int> &pf) { //O(sqrt(r))
+    pf.assign(r + 1, 0);
+    for (ll i = 2; i * i <= r; i++) { //divisor
+        if (pf[i] == 0) {
+            for (ll j = i * 2; j <= r; j += i) {
+                int pow = 0;
+                ll k = j;
+                while (k % i == 0) {
+                    k /= i;
+                    pow++;
+                }
+                pf[j] += pow;
+            }
+        }
+    }
+}
+
