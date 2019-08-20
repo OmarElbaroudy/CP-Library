@@ -21,6 +21,39 @@ void sieve(ll r, vector<bool> &isprime) { //O(sqrt(r))
     }
 }
 
+vi primes;
+vector<bool> isprime;
+
+void sieve(int N) { // O(N log log N) 
+    isprime.assign(N + 1, true);
+    isprime[0] = isprime[1] = false;
+    for (ll i = 2; i <= N; i++) {
+        if (isprime[i]) {
+            primes.push_back(i);
+            if (i * i <= N) {
+                for (ll j = i * i; j <= N; j += i) {
+                    isprime[j] = false;
+                }
+            }
+        }
+    }
+}
+
+
+//Preprocessing: call sieve with sqrt(N), O(sqrt(N) log log sqrt(N))
+//Query: best case O(1), worst case O(sqrt(N) / log sqrt(N))
+bool primalitytest(ll N) { 
+    if (N < isprime.size())
+        return isprime[N];
+    for (int p: primes) {
+        if (1ll * p * p > N) break;
+        if (N % p == 0)
+            return false;
+    }
+
+    return true;
+}
+
 //obtain the divisors of a number (not necessarily prime)
 void gendivs(ll x, vector<ll> &divs) { //O(sqrt(x))
     ll i;
