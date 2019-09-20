@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int INF = (int) 1e9 - 6;
+const int INF = (int) 1e9 + 7; //prime
 const double EPS = 1e-9;
 
 typedef vector<int> vi;
@@ -21,12 +21,12 @@ typedef unsigned long long ull;
 #define print_array(arr, n) for (int i=0; i<n ;i++) { cout << arr[i] << ' ';}
 #define nl "\n"
 #define sp " "
-#define debug(x) cout<<#x<<" = "<<(x)<<nl
+#define debug(x) cerr<<#x<<" = "<<(x)<< nl
 #define read_array(arr, n) for(int i=0; i<n; i++){cin >> arr[i];}
+#define read freopen("input.txt", "r", stdin)
+#define print freopen("output.txt", "w", stdout)
 
 int main() {
     faster;
-    
+
 }
-
-
