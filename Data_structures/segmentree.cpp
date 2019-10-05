@@ -9,17 +9,17 @@ struct segmentree {
 
     void build(int node, int l, int r) {
         if (l == r) {
-            stree[node] = in[l];
+            stree[node] = in[l - 1];
             return;
         }
         int mid = (l + r) >> 1;
-        build(node << 1, l, r);
-        build(node << 1 | 1, l, r);
+        build(node << 1, l, mid);
+        build(node << 1 | 1, mid + 1, r);
         stree[node] = combine(stree[node << 1], stree[node << 1 | 1]);
     }
 
     segmentree(T arr[], int n) {
-        in = arr; // 1-based
+        in = arr; // 0-based
         N = n;
         stree.assign(4 * N, 0); //or pad
         lazy.assign(4 * N, 0);
