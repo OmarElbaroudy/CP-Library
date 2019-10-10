@@ -9,7 +9,7 @@ bool isprime(ll x) { //O(sqrt(x))
     return true;
 }
 
-void sieve(ll r, vector<bool> &isprime) { //O(sqrt(r))
+void sieve(ll r, vector<bool> &isprime) { //O(Nlog(log(N)))
     isprime.assign(r + 1, true);
     isprime[0] = isprime[1] = false;
     for (ll i = 2; i * i <= r; i++) {
