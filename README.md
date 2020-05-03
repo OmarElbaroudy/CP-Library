@@ -1,2 +1,2 @@
 # CP-Library
-A competitive programming library in c++
+A competitive programming library in c++ and Java
